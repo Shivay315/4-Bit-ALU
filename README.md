@@ -34,3 +34,34 @@ A 5-bit signed temporary register used to store intermediate results in arithmet
 ```verilog
 zero_flag = (alu_out == 4'b0000);
 negative_flag = alu_out[3]; // MSB of 4-bit result
+
+Overflow Conditions:
+ADD:
+verilog
+Copy
+Edit
+overflow_flag = (~A[3] & ~B[3] & alu_out[3]) | (A[3] & B[3] & ~alu_out[3]);
+SUB:
+verilog
+Copy
+Edit
+overflow_flag = (~A[3] & B[3] & alu_out[3]) | (A[3] & ~B[3] & ~alu_out[3]);
+🔬 Testbench Design
+The testbench instantiates the ALU module and applies a series of unit test cases for all operations with delays for simulation. Each test demonstrates flag and output behavior:
+
+verilog
+Copy
+Edit
+initial begin
+    A = 4'b0100; B = 4'b1000; Op = 4'b000; #10;  // Clear
+    A = 4'b0011; B = 4'b0111; Op = 4'b001; #10;  // ADD
+    A = 4'b0011; B = 4'b0101; Op = 4'b010; #10;  // SUB
+    A = 4'b0011; B = 4'b0001; Op = 4'b011; #10;  // AND
+    A = 4'b0011; B = 4'b0001; Op = 4'b100; #10;  // OR
+    A = 4'b0011; B = 4'b0001; Op = 4'b101; #10;  // NOT A
+    A = 4'b0011; B = 4'b0001; Op = 4'b110; #10;  // NOT B
+    A = 4'b0011; B = 4'b0001; Op = 4'b111; #10;  // XOR
+
+    $stop;
+end
+Each test validates not only alu_out, but also the c_out, zero_flag, overflow_flag, and negative_flag behaviors — ideal for hardware-level verification and debugging.
