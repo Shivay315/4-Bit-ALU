@@ -1,48 +1,36 @@
-# 🧮 4-bit ALU in Verilog
+# 🧠 4-Bit Signed Arithmetic Logic Unit (ALU) with Testbench
 
-This is a simple implementation of a 4-bit Arithmetic and Logic Unit (ALU) written in Verilog HDL.  
-It performs basic arithmetic and logic operations on two 4-bit inputs `A` and `B`, with the operation selected using a 3-bit opcode.
+This Verilog module implements a **4-bit signed Arithmetic Logic Unit (ALU)** along with a self-contained testbench. The ALU performs **eight distinct operations**, includes **comprehensive flag support** (zero, carry, overflow, and negative), and is designed to support signed arithmetic.
 
-## 🔧 Features
+---
 
-The ALU supports the following operations:
+## 💡 Features
 
-| Op Code | Operation | Description         |
-|---------|-----------|---------------------|
-| 000     | CLR       | Clear output (0)    |
-| 001     | ADD       | A + B               |
-| 010     | SUB       | A - B               |
-| 011     | AND       | A & B               |
-| 100     | OR        | A \| B              |
-| 101     | NOT A     | Bitwise NOT of A    |
-| 110     | NOT B     | Bitwise NOT of B    |
-| 111     | XOR       | A ^ B               |
+- **Signed 4-bit Arithmetic** (Two's complement)
+- **Operation Codes (Op)**:
+  - `0000` → Clear (Output = 0)
+  - `0001` → Addition `A + B`
+  - `0010` → Subtraction `A - B`
+  - `0011` → Bitwise AND
+  - `0100` → Bitwise OR
+  - `0101` → Bitwise NOT A
+  - `0110` → Bitwise NOT B
+  - `0111` → Bitwise XOR
+- **Status Flags**:
+  - `c_out`: Carry out (for addition/subtraction overflow beyond 4 bits)
+  - `overflow_flag`: Detects overflow for signed arithmetic
+  - `zero_flag`: Indicates if output is zero
+  - `negative_flag`: Indicates if output is negative (MSB = 1)
 
-## 📥 Inputs
+---
 
-- `A [3:0]`: 4-bit input
-- `B [3:0]`: 4-bit input
-- `Op [2:0]`: 3-bit opcode to select the operation
+## 🔧 Internal Architecture
 
-## 📤 Outputs
+### `temp_result [4:0]`
+A 5-bit signed temporary register used to store intermediate results in arithmetic operations to catch carry-out and overflow without data loss.
 
-- `alu_out [3:0]`: 4-bit result of the operation
-- `c_out [3:0]`: Optional carry/flag register (could be customized further for real flags)
+### Flag Logic:
 
-## 📄 Testbench
-
-A sample testbench is included to demonstrate functionality for all operations. You can simulate using any Verilog simulator like ModelSim, Vivado, or online tools.
-
-### Sample Test Case Snippet:
 ```verilog
-initial begin
-    A = 4'b0100; B = 4'b1000; Op = 3'b000; #10;  // Clear
-    A = 4'b0011; B = 4'b0101; Op = 3'b001; #10;  // ADD
-    A = 4'b0011; B = 4'b0101; Op = 3'b010; #10;  // SUB
-    A = 4'b0011; B = 4'b0001; Op = 3'b011; #10;  // AND
-    A = 4'b0011; B = 4'b0001; Op = 3'b100; #10;  // OR
-    A = 4'b0011; B = 4'b0001; Op = 3'b101; #10;  // NOT A
-    A = 4'b0011; B = 4'b0001; Op = 3'b110; #10;  // NOT B
-    A = 4'b0011; B = 4'b0001; Op = 3'b111; #10;  // XOR
-    $stop;
-end
+zero_flag = (alu_out == 4'b0000);
+negative_flag = alu_out[3]; // MSB of 4-bit result
