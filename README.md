@@ -37,7 +37,7 @@ A sample testbench is included to demonstrate functionality for all operations. 
 ```verilog
 initial begin
     A = 4'b0100; B = 4'b1000; Op = 3'b000; #10;  // Clear
-    A = 4'b0011; B = 4'b1001; Op = 3'b001; #10;  // ADD
+    A = 4'b0011; B = 4'b0101; Op = 3'b001; #10;  // ADD
     A = 4'b0011; B = 4'b0101; Op = 3'b010; #10;  // SUB
     A = 4'b0011; B = 4'b0001; Op = 3'b011; #10;  // AND
     A = 4'b0011; B = 4'b0001; Op = 3'b100; #10;  // OR
