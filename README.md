@@ -102,38 +102,14 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ## How to Run
 
-1. Save the `alu_tb_combined.v` file.
+1. Save the `ALU.v` file.
 2. Open it in your favorite Verilog simulation tool (e.g., ModelSim, Vivado, GTKWave).
 3. Compile and simulate the testbench.
 4. Observe the waveform or console output for verification.
 
 ---
 
-## Future Improvements
-
-- Add **shift operations** (logical/arithmetic).
-- Implement **multiply** and **divide**.
-- Use **priority encoder**-based control unit.
-- Connect to a **CPU datapath** for instruction-level testing.
-- Add **ALU control decoder** (like in MIPS architecture).
-
----
-
-## Resume Tip
-
-You can showcase this project like this:
-
-```markdown
-🔧 4-Bit ALU Design — Verilog HDL
-- Designed and simulated a 4-bit ALU performing ADD, SUB, AND, OR, XOR, NOT, and Clear operations.
-- Implemented zero, carry, overflow, and negative flags.
-- Combined testbench to validate operations using ModelSim/GTKWave.
-- [Project GitHub Link](https://github.com/yourusername/4bit-ALU) ← Replace this with your actual repo link
-```
-
----
-
-## 👩‍💻 Author
+## Author
 
 Made with ❤️ by Shivay 🌸
 
