@@ -7,7 +7,7 @@ This project implements a simple 4-bit ALU in Verilog with an integrated **testb
 All Verilog modules and the testbench are contained within a single `.v` file for compactness and easy portability.
 
 ```
-alu_tb_combined.v  # Contains both the ALU and testbench
+ALU.v  # Contains both the ALU and testbench
 ```
 
 ---
