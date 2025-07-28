@@ -109,6 +109,14 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ---
 
+## 🔬 Waveform Simulation Output
+
+Below is a sample waveform simulation of the ALU operations:
+
+![ALU Waveform Simulation](Waveform.png)
+
+---
+
 ## Author
 
 Made with ❤️ by Shivay 🌸
