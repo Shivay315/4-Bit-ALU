@@ -1,8 +1,8 @@
-# ⚙️ 4-Bit Arithmetic Logic Unit (ALU) with Verilog
+#  4-Bit Arithmetic Logic Unit (ALU) with Verilog
 
 This project implements a simple 4-bit ALU in Verilog with an integrated **testbench** for simulation. It performs fundamental arithmetic and logic operations like **ADD**, **SUB**, **AND**, **OR**, **XOR**, **NOT**, and **CLEAR**, and includes flags for **carry**, **zero**, **overflow**, and **negative** detection.
 
-## 🧾 Project Structure
+## Project Structure
 
 All Verilog modules and the testbench are contained within a single `.v` file for compactness and easy portability.
 
@@ -12,7 +12,7 @@ alu_tb_combined.v  # Contains both the ALU and testbench
 
 ---
 
-## 🧮 ALU Functionality
+## ALU Functionality
 
 The ALU supports the following operations based on the 4-bit opcode:
 
@@ -35,11 +35,11 @@ Each operation sets the relevant status flags:
 
 ---
 
-## 🧪 Testbench
+## Testbench
 
 This testbench simulates all operations supported by the ALU. The results can be observed using waveform simulation tools like **ModelSim**, **Vivado**, or **GTKWave**.
 
-### 📦 Code
+### Code
 
 ```verilog
 module TB();
@@ -74,7 +74,7 @@ endmodule
 
 ---
 
-## 🔬 Waveform Simulation Example
+## Waveform Simulation Example
 
 You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signal behavior.
 
@@ -91,7 +91,7 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ---
 
-## 🧠 Design Considerations
+## Design Considerations
 
 - **Signed Handling**: Supports signed 2's complement arithmetic.
 - **Internal 5-bit Logic**: Ensures overflow/carry is captured for 4-bit results.
@@ -100,7 +100,7 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. Save the `alu_tb_combined.v` file.
 2. Open it in your favorite Verilog simulation tool (e.g., ModelSim, Vivado, GTKWave).
@@ -109,7 +109,7 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 
 - Add **shift operations** (logical/arithmetic).
 - Implement **multiply** and **divide**.
@@ -119,7 +119,7 @@ You can use ModelSim, Vivado, or GTKWave to run the testbench and view the signa
 
 ---
 
-## 📎 Resume Tip
+## Resume Tip
 
 You can showcase this project like this:
 
